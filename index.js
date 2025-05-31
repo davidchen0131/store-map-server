@@ -1,12 +1,15 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
-const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.send('伺服器運作中');
+});
 
 app.post('/api/711-callback', (req, res) => {
   const { storeid, storename, storeaddress } = req.body;
